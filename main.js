@@ -4,63 +4,10 @@ $(() => {
         .on("mousedown.lightbox", onTouchBegin)
 
     const TOTAL = 10
+    const BEGIN_HEIGHT = $('.lightbox-item').find('img').height()
     var beginX, translateX
     var beginTime, endTime
     var idx = 1
-    var ratio   // ratio of the current img and the next one
-    const INFO = [
-        {
-            "id": 1,
-            "ming": "农业展览馆",
-            "name": "Agricultural Exhibition Hall",
-            "height": 16
-        }, {
-            "id": 2,
-            "ming": "天坛-祈年殿",
-            "name": "qiniandian",
-            "height": 19.2
-        }, {
-            "id": 3,
-            "ming": "中央美术学院美术馆",
-            "name": "CAFAM",
-            "height": 24
-        }, {
-            "id": 4,
-            "ming": "雍和宫-万福阁",
-            "name": "The Lama Temple",
-            "height": 25
-        }, {
-            "id": 5,
-            "ming": "水立方",
-            "name": "The National Aquatics Centre",
-            "height": 30
-        }, {
-            "id": 6,
-            "ming": "世贸天阶-天幕",
-            "name": "World Trade Plaza",
-            "height": 30
-        }, {
-            "id": 7,
-            "ming": "今日美术馆主馆",
-            "name": "Today Art Museum",
-            "height": 30
-        }, {
-            "id": 8,
-            "ming": "毛主席纪念堂",
-            "name": "Chairman Mao Zedong Memorial Hall",
-            "height": 33.6
-        }, {
-            "id": 9,
-            "ming": "天安门",
-            "name": "Tian'an'men square",
-            "height": 34.7
-        }, {
-            "id": 10,
-            "ming": "午门",
-            "name": "Meridian Gate",
-            "height": 35.6
-        }
-    ]
 
     function init() {
         const $wps = $(".container").find(".lightbox-item")
@@ -94,6 +41,13 @@ $(() => {
     function onTouchMove(e) {
         translateX = getCursorX(e) - beginX
         $('.container').css("transform", "translate3d(" + translateX + "px, 0px, 0px)")
+        const direction = translateX > 0 ? '.prev' : '.next'
+        if((idx > 1 && idx < TOTAL) || (idx === 1 && translateX < 0) || (idx === TOTAL && translateX > 0)) {
+            zoom(direction, Math.abs(translateX))
+        }
+        if(direction === '.next') {
+            $('.prev').fadeTo(1, 1 + translateX / ($('.container').width() / 2))
+        }
     }
     function onTouchEnd() {
         $(window).off("mousemove.lightbox", onTouchMove)
@@ -135,11 +89,11 @@ $(() => {
         switch(target) {
         case '.prev':
             endX = $(".container").width()
-            $next.fadeOut('slow')
+            $next.fadeTo('slow', 0)
             break
         case '.next':
             endX = - $(".container").width()
-            $prev.fadeOut('slow')
+            $prev.fadeTo('slow', 0)
             break
         default:
             endX = 0
@@ -149,6 +103,12 @@ $(() => {
         }, {
             step(now) {
                 $(this).css("transform", "translate3d(" + now + "px, 0px, 0px)")
+                if((idx > 1 && idx < TOTAL) || (idx === 1 && now < 0) || (idx === TOTAL && now > 0)) {
+                    zoom(now > 0 ? '.prev' : '.next', Math.abs(now))
+                }
+                if(now < 0) {
+                    $('.prev').fadeTo(1, 1 + now / ($('.container').width() / 2))
+                }
             },
             duration: 1000,
             complete() {
@@ -185,11 +145,114 @@ $(() => {
         if (target === '.prev') {
             imgURL = (index === 0) ? '' : './res/png/' + index + '.png'
             $prev.find('img').attr('src', imgURL)
-            $prev.fadeIn(1000)
+            zoom(target, $('.container').width() / 2)
+            $prev.fadeTo(500, 1)
         } else if (target === '.next') {
             imgURL = (index > TOTAL) ? '' : './res/png/' + index + '.png'
             $next.find('img').attr('src', imgURL)
-            $next.fadeIn(1000)
+            $next.find('img').css('height', BEGIN_HEIGHT)
+            $next.fadeTo(500, 1)
         }
     }
+
+    function zoom(direction, x) {
+        var h1, h2
+        var $target
+        if(direction === '.prev') {
+            h1 = (INFO[idx-2] || []).height
+            h2 = INFO[idx-1].height
+            $target = $('.prev').find('img')
+        } else {
+            h1 = INFO[idx-1].height
+            h2 = INFO[idx].height
+            $target = $('.current').find('img')
+        }
+        const height = Math.round(getHeight(direction, x, h1, h2)) + 'px'
+        $target.css('height', height)
+    }
+
+    /**
+     * formula for shrink
+     * y = 2 * bh * (ratio- 1) * x / pW + bh
+     * (0 <= x <= pW/2)
+     * formula for expansion
+     * y = 2 * bh * (1 - ratio) * x / pW + bh * (2 * ratio - 1)
+     * (pW/2 <= x <= pW)
+     * @param {decides whether it is expanding or shrinking} direction
+     * @param {the offset of x axis relative to the page} x
+     * @param {height of the previous building} h1
+     * @param {height of the latter building} h2
+     */
+    function getHeight(direction, x, h1, h2) {
+        const ratio = h1 / h2
+        const pageWidth = $('.container').width()
+        var height
+        if(direction === '.prev' || direction === '.current') {
+            if(pageWidth / 2 <= x && x <= pageWidth) {
+                height = 2 * BEGIN_HEIGHT * (1 - ratio) * x / pageWidth + BEGIN_HEIGHT * (2 * ratio - 1)
+            }
+        } else if(direction === '.next') {
+            if(0 <= x && x <= pageWidth / 2) {
+                height = 2 * BEGIN_HEIGHT * (ratio - 1) * x / pageWidth + BEGIN_HEIGHT
+            }
+        }
+        return height
+    }
 })
+
+/**
+ * constructure height information
+ */
+const INFO = [
+    {
+        "id": 1,
+        "ming": "农业展览馆",
+        "name": "Agricultural Exhibition Hall",
+        "height": 16
+    }, {
+        "id": 2,
+        "ming": "天坛-祈年殿",
+        "name": "qiniandian",
+        "height": 19.2
+    }, {
+        "id": 3,
+        "ming": "中央美术学院美术馆",
+        "name": "CAFAM",
+        "height": 24
+    }, {
+        "id": 4,
+        "ming": "雍和宫-万福阁",
+        "name": "The Lama Temple",
+        "height": 25
+    }, {
+        "id": 5,
+        "ming": "水立方",
+        "name": "The National Aquatics Centre",
+        "height": 30
+    }, {
+        "id": 6,
+        "ming": "世贸天阶-天幕",
+        "name": "World Trade Plaza",
+        "height": 30
+    }, {
+        "id": 7,
+        "ming": "今日美术馆主馆",
+        "name": "Today Art Museum",
+        "height": 30
+    }, {
+        "id": 8,
+        "ming": "毛主席纪念堂",
+        "name": "Chairman Mao Zedong Memorial Hall",
+        "height": 33.6
+    }, {
+        "id": 9,
+        "ming": "天安门",
+        "name": "Tian'an'men square",
+        "height": 34.7
+    }, {
+        "id": 10,
+        "ming": "午门",
+        "name": "Meridian Gate",
+        "height": 35.6
+    }
+]

@@ -30,7 +30,7 @@
 .container {
     position: absolute;
     height: 470px;
-    width: 80%;
+    width: 60%;
     display: flex;
     align-items: center;
 }
