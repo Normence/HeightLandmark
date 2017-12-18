@@ -50,20 +50,36 @@
 .lightbox-item.prev {
     left: -100%;
     right: 100%;
+    z-index: 1;
+}
+.lightbox-item.current {
+    z-index: 3;
 }
 .lightbox-item.next {
     left: 100%;
     right: -100%;
+    z-index: 2;
 }
-.lightbox-item.prev .lightbox-item-text, .lightbox-item.next .lightbox-item-text {
-    visibility: hidden;
+
+.lightbox-item .image-wrapper {
+    flex-basis: 250px;
+    width: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin: 0 0 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 
 .lightbox-item img {
     height: 250px;
     user-select: none;
     -webkit-user-drag: none;
-    margin: 0 0 15px;
+}
+
+.lightbox-item.prev .lightbox-item-text, .lightbox-item.next .lightbox-item-text {
+    visibility: hidden;
 }
 
 .lightbox-item p {
