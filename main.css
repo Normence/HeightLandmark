@@ -102,3 +102,11 @@
     user-select: none;
     -webkit-user-drag: none;
 }
+
+.lightbox-back {
+    position: absolute;
+    bottom: 3%;
+    right: 30px;
+    cursor: pointer;
+    color: white;
+}

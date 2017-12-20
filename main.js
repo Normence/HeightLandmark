@@ -59,6 +59,9 @@ $(() => {
     $(window)
         .on("mouseup.lightbox", onTouchEnd)
         .on("mousedown.lightbox", onTouchBegin)
+    $('.lightbox-back').on('click', () => {
+        window.history.back()
+    })
 
     const TOTAL = INFO.length
     const BEGIN_HEIGHT = $('.lightbox-item').find('img').height()
