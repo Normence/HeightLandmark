@@ -22,17 +22,6 @@
     -webkit-user-drag: none;
 }
 
-.scroll {
-    position: absolute;
-    right: 0;
-    height: 470px;
-    width: 130px;;
-    background: url('./res/png/scroll edge.png') no-repeat;
-    background-size: auto, 100%, cover;
-    display: none;
-    visibility: hidden;
-}
-
 .page-detail {
     position: absolute;
     right: 0;
@@ -46,4 +35,28 @@
     bottom: 1%;
     display: none;
     visibility: hidden;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: space-around;
+    display: none;
+    visibility: hidden;
+}
+
+.container .image-wrapper {
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
 }

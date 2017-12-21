@@ -1,5 +1,6 @@
 /**
  * constructure height information
+ * TODO to be removed
  */
 const INFO = [
     {
