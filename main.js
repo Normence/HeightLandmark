@@ -1,77 +1,25 @@
-/**
- * constructure height information
- * TODO to be removed
- */
-const INFO = [
-    {
-        "id": 1,
-        "ming": "农业展览馆",
-        "name": "Agricultural Exhibition Hall",
-        "height": 16
-    }, {
-        "id": 2,
-        "ming": "天坛-祈年殿",
-        "name": "qiniandian",
-        "height": 19.2
-    }, {
-        "id": 3,
-        "ming": "中央美术学院美术馆",
-        "name": "CAFAM",
-        "height": 24
-    }, {
-        "id": 4,
-        "ming": "雍和宫-万福阁",
-        "name": "The Lama Temple",
-        "height": 25
-    }, {
-        "id": 5,
-        "ming": "水立方",
-        "name": "The National Aquatics Centre",
-        "height": 30
-    }, {
-        "id": 6,
-        "ming": "世贸天阶-天幕",
-        "name": "World Trade Plaza",
-        "height": 30
-    }, {
-        "id": 7,
-        "ming": "今日美术馆主馆",
-        "name": "Today Art Museum",
-        "height": 30
-    }, {
-        "id": 8,
-        "ming": "毛主席纪念堂",
-        "name": "Chairman Mao Zedong Memorial Hall",
-        "height": 33.6
-    }, {
-        "id": 9,
-        "ming": "天安门",
-        "name": "Tian'an'men square",
-        "height": 34.7
-    }, {
-        "id": 10,
-        "ming": "午门",
-        "name": "Meridian Gate",
-        "height": 35.6
-    }
-]
-
 $(() => {
-    $(window)
-        .on("mouseup.lightbox", onTouchEnd)
-        .on("mousedown.lightbox", onTouchBegin)
-    $('.lightbox-back').on('click', () => {
-        $('.container').transition('fade')
-        $('.scroll').transition('fade left', () => {
-            window.history.back()
-        })
-    })
-
-    const TOTAL = INFO.length
+    var INFO, TOTAL
     const BEGIN_HEIGHT = $('.lightbox-item').find('img').height()
     var beginX, translateX
     var beginTime, endTime
     var idx
+
+    $.getJSON('https://raw.githubusercontent.com/Normence/HeightLandmark/master/res/HeightInfo.json', (data) => {
+        INFO = data.data
+        TOTAL = INFO.length
+
+        $(window)
+            .on("mouseup.lightbox", onTouchEnd)
+            .on("mousedown.lightbox", onTouchBegin)
+        $('.lightbox-back').on('click', () => {
+            $('.container').transition('fade', () => {
+                window.history.back()
+            })
+        })
+
+        init()
+    })
 
     function init() {
         idx = parseInt(window.location.search.substring(1).split('=')[1])
@@ -79,24 +27,21 @@ $(() => {
         const $prev = $wps.filter(".prev")
         const $curr = $wps.filter(".current")
         const $next = $wps.filter(".next")
-        $('.scroll').transition('fade left', 500, () => {
-            $('.lightbox-item-text').fadeTo(1, 0)
-            $prev.find('.lightbox-item-text').text('placeholder')
-            $curr.find('img').attr('src', './res/png/' + idx + '.png')
-            $curr.find('.title').text(INFO[idx - 1].name)
-            $curr.find('.height').text(INFO[idx - 1].height + ' m')
-            $curr.find('.lightbox-item-text').fadeTo(300, 1)
-            $next.find('.lightbox-item-text').text('placeholder')
-            if(idx !== 1) {
-                $prev.find('img').attr('src', './res/png/' + (idx - 1) + '.png')
-            }
-            if(idx !== TOTAL) {
-                $next.find('img').attr('src', './res/png/' + (idx + 1) + '.png')
-            }
-            $('.container').delay(800).transition('fade', 500)
-        })
+        $('.lightbox-item-text').fadeTo(1, 0)
+        $prev.find('.lightbox-item-text').text('placeholder')
+        $curr.find('img').attr('src', './res/png/' + idx + '.png')
+        $curr.find('.title').text(INFO[idx - 1].name)
+        $curr.find('.height').text(INFO[idx - 1].height + ' m')
+        $curr.find('.lightbox-item-text').fadeTo(300, 1)
+        $next.find('.lightbox-item-text').text('placeholder')
+        if(idx !== 1) {
+            $prev.find('img').attr('src', './res/png/' + (idx - 1) + '.png')
+        }
+        if(idx !== TOTAL) {
+            $next.find('img').attr('src', './res/png/' + (idx + 1) + '.png')
+        }
+        $('.container').delay(800).transition('fade', 500)
     }
-    init()
 
     function onTouchBegin(e) {
         $(window).on("mousemove.lightbox", onTouchMove)

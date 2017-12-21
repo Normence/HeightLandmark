@@ -8,49 +8,129 @@
             "height": 16
         }, {
             "id": 2,
-            "ming": "天坛-祈年殿",
-            "name": "qiniandian",
-            "height": 19.2
-        }, {
-            "id": 3,
             "ming": "中央美术学院美术馆",
-            "name": "CAFAM",
+            "name": "CAFA Art Museum",
             "height": 24
         }, {
-            "id": 4,
-            "ming": "雍和宫-万福阁",
-            "name": "The Lama Temple",
-            "height": 25
-        }, {
-            "id": 5,
+            "id": 3,
             "ming": "水立方",
             "name": "The National Aquatics Centre",
             "height": 30
         }, {
-            "id": 6,
-            "ming": "世贸天阶-天幕",
-            "name": "World Trade Plaza",
-            "height": 30
-        }, {
-            "id": 7,
+            "id": 4,
             "ming": "今日美术馆主馆",
             "name": "Today Art Museum",
             "height": 30
         }, {
-            "id": 8,
+            "id": 5,
             "ming": "毛主席纪念堂",
             "name": "Chairman Mao Zedong Memorial Hall",
             "height": 33.6
         }, {
-            "id": 9,
+            "id": 6,
             "ming": "天安门",
-            "name": "Tian'an'men square",
+            "name": "Tian'an'men",
             "height": 34.7
         }, {
+            "id": 7,
+            "ming": "故宫-太和殿",
+            "name": "the Forbidden City",
+            "height": 35.05
+        }, {
+            "id": 8,
+            "ming": "北海公园-白塔",
+            "name": "Beihai Park - White Pagoda",
+            "height": 35.9
+        }, {
+            "id": 9,
+            "ming": "人民英雄纪念碑",
+            "name": "Monument of the People's Heroes",
+            "height": 37.94
+        }, {
             "id": 10,
-            "ming": "午门",
-            "name": "Meridian Gate",
-            "height": 35.6
+            "ming": "天坛-祈年殿",
+            "name": "The Temple of Heaven",
+            "height": 38
+        }, {
+            "id": 11,
+            "ming": "首都博物馆",
+            "name": "The Capital Museum",
+            "height": 41
+        }, {
+            "id": 12,
+            "ming": "中国科学技术馆",
+            "name": "China Science and Technology Museum",
+            "height": 45
+        }, {
+            "id": 13,
+            "ming": "人民大会堂",
+            "name": "The Great Hall of the People",
+            "height": 46.5
+        }, {
+            "id": 14,
+            "ming": "国家大剧院",
+            "name": "The National Grand Theater",
+            "height": 46.68
+        }, {
+            "id": 15,
+            "ming": "北京妙应寺",
+            "name": "Beijing Miaoying Temple",
+            "height": 51
+        }, {
+            "id": 16,
+            "ming": "鸟巢",
+            "name": "Beijing National Stadium",
+            "height": 69
+        }, {
+            "id": 17,
+            "ming": "北京国际饭店",
+            "name": "Beijing International Hotel",
+            "height": 104.4
+        }, {
+            "id": 18,
+            "ming": "保利国际广场",
+            "name": "Capital Airport T3 terminal",
+            "height": 161.2
+        }, {
+            "id": 19,
+            "ming": "人民日报社报刊综合业务楼",
+            "name": "People's daily office building",
+            "height": 180
+        }, {
+            "id": 20,
+            "ming": "盘古大观A座",
+            "name": "Pangu Plaza",
+            "height": 191.65
+        }, {
+            "id": 21,
+            "ming": "望京SOHO",
+            "name": "Wangjing SOHO",
+            "height": 200
+        }, {
+            "id": 22,
+            "ming": "CCTV大楼",
+            "name": "CCTV Headquarters",
+            "height": 234
+        }, {
+            "id": 23,
+            "ming": "奥林匹克塔",
+            "name": "Olympic Tower",
+            "height": 246.8
+        }, {
+            "id": 24,
+            "ming": "国贸三期大厦",
+            "name": "China WorldTowers",
+            "height": 330
+        }, {
+            "id": 25,
+            "ming": "中央广播电视塔",
+            "name": "The Central Radio and Television Tower",
+            "height": 386.5
+        }, {
+            "id": 26,
+            "ming": "中国尊",
+            "name": "China Zun",
+            "height": 528
         }
     ]
 }
