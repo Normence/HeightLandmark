@@ -23,7 +23,7 @@
     position: absolute;
     top: 3%;
     left: 30px;
-    height: 25%;
+    height: 40px;
 }
 
 .lightbox-back {
@@ -31,7 +31,7 @@
 }
 
 .lightbox-title img {
-    height: inherit;
+    height: 100%;
 }
 
 .container {
@@ -92,7 +92,8 @@
 }
 
 .lightbox-item-text {
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: 600;
     margin: 15px 0 0;
     width: 100%;
     text-align: center;

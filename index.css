@@ -4,16 +4,19 @@
     background: url('./res/png/background.png') no-repeat;
     background-size: cover;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .title {
-    margin-left: 100px;
     user-select: none;
     -webkit-user-drag: none;
-    display: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     visibility: hidden;
+    flex-basis: 400px;
 }
 
 .title img {
@@ -22,33 +25,63 @@
     -webkit-user-drag: none;
 }
 
-.page-detail {
-    position: absolute;
-    right: 0;
-    display: none;
+.page-preview-button {
     visibility: hidden;
 }
 
 .container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
+    width: 90%;
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
     align-items: flex-start;
     align-content: space-around;
-    display: none;
     visibility: hidden;
 }
 
+.preview-title {
+    position: absolute;
+    top: 3%;
+    left: 30px;
+    height: 40px;
+    z-index: 1;
+}
+
+.preview-back {
+    cursor: pointer;
+}
+
+.preview-title img {
+    height: 100%;
+}
+
 .container .image-wrapper {
-    height: 70px;
-    width: 70px;
-    display: flex;
+    height: 50px;
+    width: 50px;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin: 40px;
+    z-index: 2;
+}
+
+.container .image-wrapper:hover {
+    opacity: 0.7;
 }
 
 .container .image-wrapper img {
     max-width: 100%;
     max-height: 100%;
+}
+
+.preview-text {
+    position: absolute;
+    bottom: 3%;
+    right: 30px;
+    height: 40px;
+    z-index: 1;
+}
+
+.preview-text img {
+    height: 100%;
 }

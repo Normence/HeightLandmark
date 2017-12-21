@@ -5,6 +5,8 @@ $(() => {
     var beginTime, endTime
     var idx
 
+    $('.loader').show()
+
     $.getJSON('https://raw.githubusercontent.com/Normence/HeightLandmark/master/res/HeightInfo.json', (data) => {
         INFO = data.data
         TOTAL = INFO.length
@@ -13,7 +15,7 @@ $(() => {
             .on("mouseup.lightbox", onTouchEnd)
             .on("mousedown.lightbox", onTouchBegin)
         $('.lightbox-back').on('click', () => {
-            $('.container').transition('fade', () => {
+            $('.container').transition('fade left', () => {
                 window.history.back()
             })
         })
@@ -31,15 +33,17 @@ $(() => {
         $prev.find('.lightbox-item-text').text('placeholder')
         $curr.find('img').attr('src', './res/png/' + idx + '.png')
         $curr.find('.title').text(INFO[idx - 1].name)
-        $curr.find('.height').text(INFO[idx - 1].height + ' m')
+        $curr.find('.height').text(INFO[idx - 1].height + 'm')
         $curr.find('.lightbox-item-text').fadeTo(300, 1)
         $next.find('.lightbox-item-text').text('placeholder')
         if(idx !== 1) {
             $prev.find('img').attr('src', './res/png/' + (idx - 1) + '.png')
+            zoom('.prev', $('.container').width() / 2)
         }
         if(idx !== TOTAL) {
             $next.find('img').attr('src', './res/png/' + (idx + 1) + '.png')
         }
+        $('.loader').hide()
         $('.container').delay(800).transition('fade', 500)
     }
 
@@ -144,7 +148,7 @@ $(() => {
                 $(".container").css("transform", "none")
                 $curr = $('.current')
                 $curr.find('.title').text(INFO[idx - 1].name)
-                $curr.find('.height').text(INFO[idx - 1].height + ' m')
+                $curr.find('.height').text(INFO[idx - 1].height + 'm')
                 $curr.find('.lightbox-item-text').fadeTo(300, 1)
                 $(window)
                     .on("mouseup.lightbox", onTouchEnd)
