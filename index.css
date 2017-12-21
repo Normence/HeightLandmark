@@ -1,0 +1,49 @@
+.page {
+    overflow: hidden;
+    height: 100%;
+    background: url('./res/jpg/background.jpg') no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    margin-left: 100px;
+    user-select: none;
+    -webkit-user-drag: none;
+    display: none;
+    visibility: hidden;
+}
+
+.title img {
+    height: 190px;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.scroll {
+    position: absolute;
+    right: 0;
+    height: 470px;
+    width: 130px;;
+    background: url('./res/png/scroll edge.png') no-repeat;
+    background-size: auto, 100%, cover;
+    display: none;
+    visibility: hidden;
+}
+
+.page-detail {
+    position: absolute;
+    right: 0;
+    display: none;
+    visibility: hidden;
+}
+
+.page-preview {
+    position: absolute;
+    left: 50%;
+    bottom: 1%;
+    display: none;
+    visibility: hidden;
+}

@@ -60,30 +60,40 @@ $(() => {
         .on("mouseup.lightbox", onTouchEnd)
         .on("mousedown.lightbox", onTouchBegin)
     $('.lightbox-back').on('click', () => {
-        window.history.back()
+        $('.container').transition('fade')
+        $('.scroll').transition('fade left', () => {
+            window.history.back()
+        })
     })
 
     const TOTAL = INFO.length
     const BEGIN_HEIGHT = $('.lightbox-item').find('img').height()
     var beginX, translateX
     var beginTime, endTime
-    var idx = 1
+    var idx
 
     function init() {
+        idx = parseInt(window.location.search.substring(1).split('=')[1])
         const $wps = $(".container").find(".lightbox-item")
         const $prev = $wps.filter(".prev")
         const $curr = $wps.filter(".current")
         const $next = $wps.filter(".next")
-        $prev.find('.lightbox-item-text').text('placeholder')
-        $prev.find('.lightbox-item-text').fadeTo(1, 0)
-        $curr.find('img').attr('src', './res/png/1.png')
-        $curr.find('.title').text(INFO[0].name)
-        $curr.find('.height').text(INFO[0].height + ' m')
-        $next.find('.lightbox-item-text').text('placeholder')
-        $next.find('.lightbox-item-text').fadeTo(1, 0)
-        if(TOTAL > 1) {
-            $next.find('img').attr('src', './res/png/2.png')
-        }
+        $('.scroll').transition('fade left', 500, () => {
+            $('.lightbox-item-text').fadeTo(1, 0)
+            $prev.find('.lightbox-item-text').text('placeholder')
+            $curr.find('img').attr('src', './res/png/' + idx + '.png')
+            $curr.find('.title').text(INFO[idx - 1].name)
+            $curr.find('.height').text(INFO[idx - 1].height + ' m')
+            $curr.find('.lightbox-item-text').fadeTo(300, 1)
+            $next.find('.lightbox-item-text').text('placeholder')
+            if(idx !== 1) {
+                $prev.find('img').attr('src', './res/png/' + (idx - 1) + '.png')
+            }
+            if(idx !== TOTAL) {
+                $next.find('img').attr('src', './res/png/' + (idx + 1) + '.png')
+            }
+            $('.container').delay(800).transition('fade', 500)
+        })
     }
     init()
 

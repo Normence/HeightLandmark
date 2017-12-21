@@ -26,6 +26,10 @@
     height: 30%;
 }
 
+.lightbox-back {
+    cursor: pointer;
+}
+
 .lightbox-title img {
     height: inherit;
 }
@@ -36,6 +40,8 @@
     width: 100%;
     background: url('./res/jpg/scroll.jpg');
     background-size: auto, 100%, cover;
+    display: none;
+    visibility: hidden;
 }
 
 .container {
@@ -44,6 +50,8 @@
     width: 60%;
     display: flex;
     align-items: center;
+    display: none;
+    visibility: hidden;
 }
 
 .lightbox-item {
@@ -103,10 +111,8 @@
     -webkit-user-drag: none;
 }
 
-.lightbox-back {
+.lightbox-preview {
     position: absolute;
     bottom: 3%;
     right: 30px;
-    cursor: pointer;
-    color: white;
 }

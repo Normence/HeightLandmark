@@ -6,16 +6,18 @@
 
     <title>Slider</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
       integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
       crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
     <script src="main.js"></script>
   </head>
   <body>
     <div class="lightbox">
-      <div class="lightbox-title">
+      <div class="lightbox-title lightbox-back">
         <img src="./res/png/title (small).png">
       </div>
       <div class="scroll"></div>
@@ -42,7 +44,7 @@
           <p class="lightbox-item-text height"> </p>
         </div>
       </div>
-      <div class="lightbox-back">HOME</div>
+      <button class="ui inverted button lightbox-preview">VIEW</button>
     </div>
   </body>
 </html>
