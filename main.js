@@ -4,8 +4,10 @@ $(() => {
     var beginX, translateX
     var beginTime, endTime
     var idx
+    var modalShown = false
 
     $('.loader').show()
+    $('.lightbox-detail').hide()
 
     $.getJSON('https://raw.githubusercontent.com/Normence/HeightLandmark/master/res/HeightInfo.json', (data) => {
         INFO = data.data
@@ -43,7 +45,26 @@ $(() => {
         if(idx !== TOTAL) {
             $next.find('img').attr('src', './res/png/' + (idx + 1) + '.png')
         }
+        $('.lightbox-detail').click(() => {
+            $('.ui.modal .image').attr('src', './res/details/' + idx + '.png')
+            modalShown
+                ? $('.ui.modal')
+                    .modal('setting', {
+                        blurring: true,
+                    })
+                    .modal('show')
+                : setTimeout(() => {
+                    $('.ui.modal')
+                        .modal('setting', {
+                            blurring: true,
+                        })
+                        .modal('show')
+                    modalShown = true
+                }, 500)
+
+        })
         $('.loader').hide()
+        $('.lightbox-detail').show()
         $('.container').delay(800).transition('fade', 500)
     }
 

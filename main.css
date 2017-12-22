@@ -32,6 +32,8 @@
 
 .lightbox-title img {
     height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .container {
@@ -102,8 +104,13 @@
     -webkit-user-drag: none;
 }
 
-.lightbox-preview {
+.lightbox-detail {
     position: absolute;
     bottom: 3%;
     right: 30px;
+}
+
+.ui.modal .image {
+    width: 100%;
+    height: 100%;
 }

@@ -27,6 +27,8 @@
 
 .page-preview-button {
     visibility: hidden;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .container {
@@ -45,6 +47,8 @@
     left: 30px;
     height: 40px;
     z-index: 1;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .preview-back {
@@ -53,6 +57,8 @@
 
 .preview-title img {
     height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .container .image-wrapper {
@@ -63,6 +69,8 @@
     align-items: center;
     margin: 40px;
     z-index: 2;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .container .image-wrapper:hover {
@@ -72,6 +80,8 @@
 .container .image-wrapper img {
     max-width: 100%;
     max-height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .preview-text {
@@ -80,8 +90,12 @@
     right: 30px;
     height: 40px;
     z-index: 1;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .preview-text img {
     height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
 }
