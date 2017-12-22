@@ -32,7 +32,7 @@ $(() => {
                 })
             })
             for(var i = 1; i <= TOTAL; i++) {
-                $('<a class="image-wrapper" href="./main.html?id=' + i + '"><img src="./res/preview/' + i + '.png"></a>').appendTo('.container')
+                $('<a class="image-wrapper" data-inverted="" data-tooltip="' + INFO[i-1].name + '" data-position="top center" data-variation="tiny" href="./main.html?id=' + i + '"><img src="./res/preview/' + i + '.png"></a>').appendTo('.container')
             }
             preview()
         })

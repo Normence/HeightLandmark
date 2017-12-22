@@ -89,7 +89,7 @@
         }, {
             "id": 18,
             "ming": "保利国际广场",
-            "name": "Capital Airport T3 terminal",
+            "name": "Poly International Plaza",
             "height": 161.2
         }, {
             "id": 19,
@@ -132,5 +132,6 @@
             "name": "China Zun",
             "height": 528
         }
+
     ]
 }
