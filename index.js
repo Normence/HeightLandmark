@@ -22,6 +22,7 @@ $(() => {
         $('.loader').show()
         previewIsInitialized = true
         $.getJSON('https://raw.githubusercontent.com/Normence/HeightLandmark/master/res/HeightInfo.json', (data) => {
+            //        $.getJSON('localhost:8080/res/HeightInfo.json', (data) => {
             INFO = data.data
             TOTAL = INFO.length
 
@@ -31,8 +32,11 @@ $(() => {
                     $('.page-preview-button').transition('fade up', 500)
                 })
             })
-            for(var i = 1; i <= TOTAL; i++) {
-                $('<a class="image-wrapper" data-inverted="" data-tooltip="' + INFO[i-1].name + '" data-position="top center" data-variation="tiny" href="./main.html?id=' + i + '"><img src="./res/preview/' + i + '.png"></a>').appendTo('.container')
+            for (var i = 1; i <= TOTAL; i++) {
+                $('<a class="image-wrapper" data-inverted="" data-tooltip="' + INFO[i - 1].name + '" data-position="top center" data-variation="tiny" href="./main.html?id=' + i + '"><img src="./res/preview/' + i + '.png"></a>').appendTo('.photo-container')
+                if (i % 4 === 3) {
+                    $('.photo-container a:last-child').addClass('img-lg')
+                }
             }
             preview()
         })
