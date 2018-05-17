@@ -7,49 +7,47 @@
     <title>Slider</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="semantic/dist/semantic.min.js"></script>
     <script src="main.js"></script>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="lightbox">
-      <div class="lightbox-title lightbox-back">
-        <img src="./res/png/title (small).png">
-      </div>
-      <div class="container">
-        <div class="lightbox-item prev">
-          <div class="image-wrapper">
-            <img>
-          </div>
-          <p class="lightbox-item-text title"> </p>
-          <p class="lightbox-item-text height"> </p>
+        <div class="ui modal">
+            <div class="image content">
+                <img class="image">
+            </div>
         </div>
-        <div class="lightbox-item current">
-          <div class="image-wrapper">
-            <img>
-          </div>
-          <p class="lightbox-item-text title"> </p>
-          <p class="lightbox-item-text height"> </p>
+        <div class="lightbox-title lightbox-back">
+            <img src="./res/png/title (small).png">
         </div>
-        <div class="lightbox-item next">
-          <div class="image-wrapper">
-            <img>
-          </div>
-          <p class="lightbox-item-text title"> </p>
-          <p class="lightbox-item-text height"> </p>
+        <div class="container">
+            <div class="lightbox-item prev">
+                <div class="image-wrapper">
+                    <img>
+                </div>
+                <p class="lightbox-item-text title"> </p>
+                <p class="lightbox-item-text height"> </p>
+            </div>
+            <div class="lightbox-item current">
+                <div class="image-wrapper">
+                    <img>
+                </div>
+                <p class="lightbox-item-text title"> </p>
+                <p class="lightbox-item-text height"> </p>
+            </div>
+            <div class="lightbox-item next">
+                <div class="image-wrapper">
+                    <img>
+                </div>
+                <p class="lightbox-item-text title"> </p>
+                <p class="lightbox-item-text height"> </p>
+            </div>
         </div>
-      </div>
-      <div class="ui modal">
-        <div class="image content">
-          <img class="image">
-        </div>
-      </div>
-      <button class="ui inverted red button lightbox-detail">MORE</button>
-      <div class="ui active centered inline loader"></div>
+        <button class="ui inverted red button lightbox-detail">MORE</button>
+        <div class="ui active centered inline loader"></div>
     </div>
-  </body>
+</body>
 </html>
